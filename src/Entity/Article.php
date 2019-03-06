@@ -31,7 +31,10 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Url()
+     * @Assert\Url(
+     *     message = "Le lien '{{ value }}' n'est pas valide.",
+     *     checkDNS = "ANY"
+     * )
      */
     Private $image;
 

@@ -10,7 +10,7 @@
 
     <article>
         <h2>{{article.title}}</h2>
-        <div class="metadata">Écrit le {{article.createAt | date('d/m/Y')}} à {{article.createAt|date('H:i')}} dans la catégorie Politique</div>
+        <div class="metadata">Écrit le {{article.createAt | date('d/m/Y')}} à {{article.createAt|date('H:i')}} dans la catégorie {{ article.category.title }}</div>
             <img src="{{article.image}}" alt="">
             {{article.content|raw}}
             <a href="{{ path('blog_show', {'id': article.id}) }}" class="btn btn-primary">Lire la suite</a>

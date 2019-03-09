@@ -11,7 +11,9 @@
 </article>
 
 <hr>
-<h2>Commentaire(s)</h2>
+<h2>Il y a actuellement {{ article.comments |length }} commentaire(s)</h2>
+
+<hr>
 <section id="commentaires">
     {% for comment in article.comments %}
     <hr>
@@ -26,6 +28,21 @@
         </div>
     </div>
     {% endfor %}
+
+{% if app.user %}
+<hr>
+<h1>Écrire un commentaire</h1>
+{{ form_start(commentForm)}}
+{{ form_row(commentForm.author, {'attr': {'placeholder': "Votre nom"}})}}
+{{ form_row(commentForm.content, {'attr': {'placeholder': "Votre commentaire"}})}}
+<button type="submit" class="btn btn-success">
+Envoyer !
+</button>
+{{ form_end(commentForm) }}
+{% else %}
+<h2>Vous devez vous connecter pour commenter</h2>
+<a href="{{path('security_login')}}" class="btn btn-success" >Se connecter</a>
+{% endif %}
 </section>
 
 {% endblock %}
